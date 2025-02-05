@@ -1,0 +1,64 @@
+@charset "UTF-8";
+.container{
+	margin-top: 20px;	/* 시작점  */
+}
+.row{
+	margin: 0px outo;	/* 가운데 정렬 */
+	width: 960px;
+}
+p{
+	overflow: hidden;			/* 글자수가 주어진 공간을 넘어가면 숨긴다 */
+	white-space: nowrap;		/*  */
+	text-overflow:  ellipsis;	/* ...출력 */
+	margin-bottom: 0px;
+}
+span.state{
+	font-style: bold;
+	font-size: 0.8em;
+	color: gray;
+}
+span.state-up{
+	color: red;
+}
+span.state-down{
+	color: blue;
+}
+table{
+	table-layout: fixed;
+}
+th{
+	text-align: center;
+	font-weight: bold;
+}
+tbody > tr:hover {
+	font-weight: bold;
+}
+table > tbody > tr > td:nth-child(n){
+	padding-bottom: 0px;
+}
+table > tbody > tr > td:nth-child(5n+2){
+	padding: 0px;
+}
+td.mno, td.poster{
+	text-align: center;
+	font-weight: bold;
+}
+.mno{
+	width: 80px;
+}
+.poster{
+	width: 60px;
+}
+.title{
+	width: 400px;
+}
+.singer{
+	width: 200px;
+}
+.album{
+	width: 220px;
+}
+img{
+	width: 45px;
+	height: 60px;
+}
