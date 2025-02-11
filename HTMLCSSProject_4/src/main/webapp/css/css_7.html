@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="table.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+let i = 0;
+$(function(){
+	$('.dataTr').click(function() {
+		if(i==0){
+			i=1;
+			$('#content').show("slow");
+		}else{
+			i=0;
+			$('#content').hide("slow");
+		}
+	})
+})
+</script>
+</head>
+<body>
+	<table class="table_content" width=700>
+		<tr>
+			<th>번호</th>
+			<th>제목</th>
+			<th>이름</th>
+			<th>작성일</th>
+			<th>조회수</th>
+		</tr>
+		<tr class="dataTr">
+			<td class="text-center">1</td>
+			<td>현대차·기아 등 미국 전기차 충전 동맹, 충전소 운영 본격화</td>
+			<td class="text-center">홍길동</td>
+			<td class="text-center">2025-02-05</td>
+			<td class="text-center">10</td>
+		</tr>
+		<tr id="content" style="display: none;">
+			<td colspan="5" height="200" class="text-left" valign="top">
+				<pre>
+현대차와 기아가 미국에서 BMW 등 글로벌 완성차 기업과 손잡고 결성한 '충전 동맹'이
+미국 곳곳에서 충전소 운영을 본격 개시합니다.
+현대차는 북미 전기차 충전 망 구축을 위해 다른 7개 자동차 업체와 함께 설립한
+조인트 벤처 '아이오나'(Ionna)의 개소식을 미국 노스캐롤라이나 더럼 본사에서 열었습니다.
+노스캐롤라이나 외에도 텍사스주 휴스턴과 캔자스주 애빌린, 애리조나주 윌콕스에도
+새 충전소를 개장했으며, 현재 추가로 6곳에서 충전소를 건설 중입니다.
+아이오나는 지난해 2월 출범한 이후 미 전역의 100여 곳에 충전소 부지 계약을 마쳤고,
+지난해 말부터 80여 개 차량 모델로 4,400여 회에 달하는 충전 테스트를 거쳤습니다.
+				</pre>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
