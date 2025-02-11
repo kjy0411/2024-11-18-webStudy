@@ -1,4 +1,4 @@
-package com.sist.Music;
+package com.sist.music;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -75,8 +75,7 @@ public class MusicDetail extends HttpServlet {
 		out.println("<td class=text-right>");
 		out.println("<a href=# class=\"btn btn-xs btn-danger\">좋아요</a>");
 		out.println("<a href=# class=\"btn btn-xs btn-success\">찜하기</a>");
-		out.println("<a href=MusicList class=\"btn btn-xs btn-primary\">목록으로1</a>");
-		out.println("<a href=MusicList2 class=\"btn btn-xs btn-primary\">목록으로2</a>");
+		out.println("<a href=MainServlet class=\"btn btn-xs btn-primary\">목록으로</a>");
 		out.println("</td>");
 		out.println("</tr>");
 		out.println("</table>");

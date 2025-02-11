@@ -94,9 +94,6 @@ public class FoodList extends HttpServlet {
 		}
 		out.println("</ul>");
 		out.println("</div>");
-		out.println("<div class=\"row text-right\">");
-		out.println("<a href=MainServlet class=\"btn btn-success\">메인으로</a>");
-		out.println("</div>");
 		out.println("<div class=row>");
 		out.println("<h3>최신 방문 맛집</h3>");
 		out.println("<hr>");
