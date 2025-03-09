@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.dao.com-mapper">
+	<select id="welfareFind" resultType="int" parameterType="hashmap">
+		SELECT wno FROM welfare WHERE name=#{fd}
+	</select>
+	<select id="officialCount" resultType="int">
+		SELECT count(*) FROM official
+	</select>
+	<!--
+	CID
+	PW
+	EMAIL
+	CNAME
+	NAME
+	PHONE
+	BRNUMBER
+	STATE
+	ACCESS_KEY 
+	 -->
+	<insert id="officialInsert" parameterType="officialVO">
+		INSERT INTO official
+		VALUES(#{cid},#{pw},#{email},#{cname},#{name},#{phone},#{brnumber},#{state},#{access_key})
+	</insert>
+	<!--
+	CID
+	NAME
+	INTRODUCTION
+	ESTDATE
+	C_TYPE
+	ECOUNT
+	TAKE
+	INDUSTRY
+	REPRESENTATIVE
+	HOMEPAGE
+	BU_DETAILS
+	ADDRESS
+	HISTORY
+	ACCESS_KEY
+	POSTER
+	SAMPLE 
+	 -->
+	<insert id="comInsert" parameterType="ComVO">
+		INSERT INTO company
+		VALUES(
+			#{cid},
+			#{name},
+			#{introduction},
+			NVL(TO_DATE(#{dbdate},'YYYY-MM-DD'),null),
+			#{c_type},
+			#{ecount},
+			((#{jo}*10000+#{uk})*10000+#{man})*10000,
+			#{industry},
+			#{representative},
+			#{homepage},
+			#{bu_details},
+			#{address},
+			#{history},
+			#{access_key},
+			#{poster},
+			null)
+	</insert>
+	<insert id="comWelfareInsert" parameterType="WelfareVO">
+		INSERT INTO COM_WELFARE
+		VALUES(#{wno},#{id})
+	</insert>
+	<select id="cidKey" resultType="ComVO">
+		SELECT cid,access_key FROM company
+	</select>
+	<!--
+	ENO              NOT NULL NUMBER        
+	NAME                      VARCHAR2(100) 
+	TITLE                     VARCHAR2(200) 
+	PERSONAL_HISTORY          VARCHAR2(100) 
+	SALARY                    NUMBER(12)    
+	EDUCATION                 NUMBER        
+	LOC                       VARCHAR2(400) 
+	EMP_TYPE                  VARCHAR2(200) 
+	REGDATE                   DATE          
+	HIT                       NUMBER        
+	DEADLINE                  DATE          
+	CID              NOT NULL VARCHAR2(10) 
+	 -->
+	<insert id="empInsert" parameterType="EmpVO">
+		INSERT INTO employment
+		VALUES(
+			#{eno},
+			#{name},
+			#{title},
+			#{personal_history},
+			#{salary},
+			#{education},
+			#{loc},
+			#{emp_type},
+			TO_DATE(#{dbRegdate},'YYYY-MM-DD HH24:MI:SS'),
+			#{hit},
+			TO_DATE(#{dbDeadline},'YYYY-MM-DD HH24:MI:SS'),
+			#{cid},
+			#{content}
+		)
+	</insert>
+	<insert id="jobInsert" parameterType="JobVO">
+		INSERT INTO emp_job
+		values(#{eno},#{jno})
+	</insert>
+</mapper>
