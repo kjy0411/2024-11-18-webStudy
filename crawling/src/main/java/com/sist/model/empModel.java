@@ -199,7 +199,7 @@ public class empModel {
         		evo.setDbRegdate(dbRegdate);
         		evo.setDbDeadline(dbDeadline);
         		evo.setCid(cid);
-        		//MainDAO.empInsert(evo);
+        		MainDAO.empInsert(evo);
         		System.out.println(
         				"공고번호 : "+evo.getEno()+"\n"
 						+"기업명 : "+evo.getName()+"\n"
@@ -219,7 +219,7 @@ public class empModel {
         		for(String j:jList) {
         			System.out.println(j+" ");
         			jvo.setJno(Integer.parseInt(j));
-        			//MainDAO.jobInsert(jvo);
+        			MainDAO.jobInsert(jvo);
         		}
         		
         		driver.quit();
