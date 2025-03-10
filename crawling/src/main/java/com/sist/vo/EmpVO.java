@@ -21,7 +21,13 @@ import java.util.Date;
 
 public class EmpVO {
 	private int eno, salary,hit,education;
-	private String name,title,personal_history,loc,emp_type,cid,dbRegdate, dbDeadline,content;
+	private String name,title,personal_history,loc,emp_type,cid,dbRegdate, dbDeadline,content,salary_str;
+	public String getSalary_str() {
+		return salary_str;
+	}
+	public void setSalary_str(String salary_str) {
+		this.salary_str = salary_str;
+	}
 	public String getContent() {
 		return content;
 	}

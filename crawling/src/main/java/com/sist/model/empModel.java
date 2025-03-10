@@ -19,9 +19,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 @Controller
 public class empModel {
-	@RequestMapping("crawling/emp.do")
-	public void crawl(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("test");
+	public static void main(String[] args) {
 		System.setProperty("webdriver.chrome.driver", "C:/webDev/chromedriver.exe");
 
         // 웹 드라이버 실행
@@ -64,6 +62,7 @@ public class empModel {
         	//공고 데이터 추출
         	int eno=0;//공고번호
         	int salary=0;//급여
+        	String salary_str="";//급여
         	String sal="";
         	int hit=0;//조회수
         	String name="";//기업명
@@ -136,11 +135,24 @@ public class empModel {
         				}else if(t.equals("근무일시")) {
         					emp_type+="|"+r;
         				}else if(t.equals("급여")) {
+        					if(r.lastIndexOf("상")==-1) {
+        						salary_str=r.trim();
+        					}else {
+        						salary_str=r.substring(0,r.lastIndexOf("상")).trim();
+        					}
+        					
         					if(r.equals("면접 후 결정")||r.equals("회사내규에 따름")) {
         						salary=0;
-        					}else {
+        					}else if(r.subSequence(0, 2).equals("연봉")){
         						sal=r.substring(0,r.indexOf("원")).replaceAll("[^0-9]", "");
         						salary=Integer.parseInt(sal);
+        					}else if(r.subSequence(0, 2).equals("월급")){
+        						sal=r.substring(0,r.indexOf("원")).replaceAll("[^0-9]", "");
+        						salary=Integer.parseInt(sal)*12;
+        					}else if(r.subSequence(0, 2).equals("일급")){
+        						salary=0;
+        					}else if(r.subSequence(0, 2).equals("시급")){
+        						salary=0;
         					}
         				}else if(t.equals("근무지역")) {
         					if(r.lastIndexOf("지")==-1) {
@@ -181,12 +193,13 @@ public class empModel {
         		evo.setPersonal_history(personal_history);
         		evo.setEducation(education);
         		evo.setEmp_type(emp_type);
+        		evo.setSalary_str(salary_str);
         		evo.setSalary(salary);
         		evo.setLoc(loc);
         		evo.setDbRegdate(dbRegdate);
         		evo.setDbDeadline(dbDeadline);
         		evo.setCid(cid);
-        		MainDAO.empInsert(evo);
+        		//MainDAO.empInsert(evo);
         		System.out.println(
         				"공고번호 : "+evo.getEno()+"\n"
 						+"기업명 : "+evo.getName()+"\n"
@@ -194,7 +207,8 @@ public class empModel {
 						+"경력 : "+evo.getPersonal_history()+"\n"
 						+"학력 : "+evo.getEducation()+" "+etest+"\n"
 						+"근무형태 : "+evo.getEmp_type()+"\n"
-						+"급여 : "+evo.getSalary()+"\n"
+						+"급여 : "+evo.getSalary_str()+"\n"
+						+"연봉 : "+evo.getSalary()+"만원\n"
 						+"근무지역 : "+evo.getLoc()+"\n"
 						+"시작일 : "+evo.getDbRegdate()+"\n"
 						+"마감일 : "+evo.getDbDeadline()+"\n"
@@ -205,7 +219,7 @@ public class empModel {
         		for(String j:jList) {
         			System.out.println(j+" ");
         			jvo.setJno(Integer.parseInt(j));
-        			MainDAO.jobInsert(jvo);
+        			//MainDAO.jobInsert(jvo);
         		}
         		
         		driver.quit();

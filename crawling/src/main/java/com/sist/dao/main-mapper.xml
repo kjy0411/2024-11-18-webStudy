@@ -72,7 +72,7 @@
 	NAME                      VARCHAR2(100) 
 	TITLE                     VARCHAR2(200) 
 	PERSONAL_HISTORY          VARCHAR2(100) 
-	SALARY                    NUMBER(12)    
+	SALARY_STR                VARCHAR2(400)
 	EDUCATION                 NUMBER        
 	LOC                       VARCHAR2(400) 
 	EMP_TYPE                  VARCHAR2(200) 
@@ -80,6 +80,8 @@
 	HIT                       NUMBER        
 	DEADLINE                  DATE          
 	CID              NOT NULL VARCHAR2(10) 
+	CONTENT                   CLOB
+	SALARY                    NUMBER    
 	 -->
 	<insert id="empInsert" parameterType="EmpVO">
 		INSERT INTO employment
@@ -88,7 +90,7 @@
 			#{name},
 			#{title},
 			#{personal_history},
-			#{salary},
+			#{salary_str},
 			#{education},
 			#{loc},
 			#{emp_type},
@@ -96,7 +98,8 @@
 			#{hit},
 			TO_DATE(#{dbDeadline},'YYYY-MM-DD HH24:MI:SS'),
 			#{cid},
-			#{content}
+			#{content},
+			#{salary}
 		)
 	</insert>
 	<insert id="jobInsert" parameterType="JobVO">
