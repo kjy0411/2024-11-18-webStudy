@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beens>
+	<been id="list.do" class="com.sist.model.ListModel"/>
+	<been id="detail.do" class="com.sist.model.DetailModel"/>
+	<been id="insert.do" class="com.sist.model.InsertModel"/>
+	<been id="insert_ok.do" class="com.sist.model.InsertOkModel"/>
+</beens>

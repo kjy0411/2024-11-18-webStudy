@@ -1,7 +1,7 @@
 package com.sist.model;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -29,9 +29,9 @@ public class empModel {
         	String cid=vo.getCid();
         	WebDriver driver = new ChromeDriver();
         	
-        	driver.get("https://www.saramin.co.kr/zf_user/company-info/view-inner-recruit?csn="+key);
+        	driver.get("https://www.saramin.co.kr/zf_user/company-info/view-inner-recruit?csn="+"Qm45c1kvejJ2R2poN1NMTDgxK1RsUT09");
         	//해당 기업의 공고번호 추출
-        	List<String> nums=new ArrayList<String>();
+        	Set<String> nums=new HashSet<>();
         	try {
         		WebElement count = driver.findElement(By.cssSelector("span.count strong.num"));
         		int c=Integer.parseInt(count.getText().trim());
@@ -59,6 +59,9 @@ public class empModel {
 				e.printStackTrace();
 			}
         	driver.quit();
+        	for(String num:nums) {
+        		System.out.println(num);
+        	}
         	//공고 데이터 추출
         	int eno=0;//공고번호
         	int salary=0;//급여
@@ -199,7 +202,7 @@ public class empModel {
         		evo.setDbRegdate(dbRegdate);
         		evo.setDbDeadline(dbDeadline);
         		evo.setCid(cid);
-        		MainDAO.empInsert(evo);
+        		//MainDAO.empInsert(evo);
         		System.out.println(
         				"공고번호 : "+evo.getEno()+"\n"
 						+"기업명 : "+evo.getName()+"\n"
@@ -219,7 +222,7 @@ public class empModel {
         		for(String j:jList) {
         			System.out.println(j+" ");
         			jvo.setJno(Integer.parseInt(j));
-        			MainDAO.jobInsert(jvo);
+        			//MainDAO.jobInsert(jvo);
         		}
         		
         		driver.quit();

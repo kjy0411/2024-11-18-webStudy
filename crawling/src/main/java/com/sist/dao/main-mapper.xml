@@ -58,14 +58,19 @@
 			#{history},
 			#{access_key},
 			#{poster},
-			null)
+			null,
+			0,
+			TO_NUMBER(SUBSTR(#{cid},2))
+			)
 	</insert>
 	<insert id="comWelfareInsert" parameterType="WelfareVO">
 		INSERT INTO COM_WELFARE
 		VALUES(#{wno},#{id})
 	</insert>
 	<select id="cidKey" resultType="ComVO">
-		SELECT cid,access_key FROM company
+		select cid,access_key,str
+		from (select cid,access_key,TO_NUMBER(substr(cid,2),'999999999') as str from company)
+		order by str
 	</select>
 	<!--
 	ENO              NOT NULL NUMBER        
