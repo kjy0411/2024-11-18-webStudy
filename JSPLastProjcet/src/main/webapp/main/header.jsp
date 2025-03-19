@@ -146,7 +146,7 @@ function login(){
                                         <a class="dropdown-item" href="../seoul/seoul_list.do?mode=2">자연 & 관광</a>
                                         <a class="dropdown-item" href="../seoul/seoul_list.do?mode=3">쇼핑</a>
                                         <a class="dropdown-item" href="../seoul/seoul_list.do?mode=4">음식</a>
-                                        <a class="dropdown-item" href="#">날씨</a>
+                                        <a class="dropdown-item" href="../seoul/weather.do">날씨</a>
                                         <a class="dropdown-item" href="#">여행코스</a>
                                     </div>
                                 </li>
@@ -160,7 +160,7 @@ function login(){
                                         <a class="dropdown-item" href="../notice/notice_user_list.do">공지사항</a>
                                         <a class="dropdown-item" href="../qna/qna_list.do">묻고답하기</a>
                                         <c:if test="${sessionScope.id!=null }">
-	                                        <a class="dropdown-item" href="#">실시간채팅</a>
+	                                        <a class="dropdown-item" href="../chat/chat.do">실시간채팅</a>
                                         </c:if>
                                     </div>
                                 </li>
