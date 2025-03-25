@@ -74,4 +74,16 @@ public class MemberDAO {
 		session.close();
 		return vo;
 	}
+	/*
+	<select id="memberInfoData" resultType="MemberVO" parameterType="String">
+		SELECT * FROM project_member
+		WHERE id=#{id}
+	</select>
+	 */
+	public static MemberVO memberInfoData(String id) {
+		SqlSession session=ssf.openSession();
+		MemberVO vo=session.selectOne("memberInfoData",id);
+		session.close();
+		return vo;
+	}
 }

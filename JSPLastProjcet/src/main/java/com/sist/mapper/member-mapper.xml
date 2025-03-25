@@ -20,4 +20,8 @@
 		FROM project_member
 		WHERE id=#{id}
 	</select>
+	<select id="memberInfoData" resultType="MemberVO" parameterType="String">
+		SELECT * FROM project_member
+		WHERE id=#{id}
+	</select>
 </mapper>

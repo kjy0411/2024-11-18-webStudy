@@ -2,6 +2,7 @@ package com.sist.model;
 
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
+import com.sist.dao.CartDAO;
 import com.sist.dao.JjimDAO;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -26,6 +27,30 @@ public class MyPageModel {
 		List<JjimVO> list=JjimDAO.jjimFoodListData(id);
 		request.setAttribute("list", list);
 		request.setAttribute("my_jsp", "../jjim/jjim_list.jsp");
+		request.setAttribute("main_jsp", "../mypage/my_main.jsp");
+		return "../main/main.jsp";
+	}
+	@RequestMapping("mypage/mypage_cart_list.do")
+	public String mypage_cart_list(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session=request.getSession();
+		String id=(String)session.getAttribute("id");
+		List<CartVO> list=CartDAO.cartListData(id);
+		
+		request.setAttribute("list", list);
+		request.setAttribute("count", list.size());
+		request.setAttribute("my_jsp", "../cart/cart_list.jsp");
+		request.setAttribute("main_jsp", "../mypage/my_main.jsp");
+		return "../main/main.jsp";
+	}
+	@RequestMapping("mypage/mypage_buy_list.do")
+	public String mypage_buy_list(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session=request.getSession();
+		String id=(String)session.getAttribute("id");
+		List<CartVO> list=CartDAO.buyListData(id);
+		
+		request.setAttribute("list", list);
+		request.setAttribute("count", list.size());
+		request.setAttribute("my_jsp", "../cart/buy_list.jsp");
 		request.setAttribute("main_jsp", "../mypage/my_main.jsp");
 		return "../main/main.jsp";
 	}

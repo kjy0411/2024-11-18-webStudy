@@ -18,11 +18,11 @@ function requestPay() {
         merchant_uid: "ORD20180131-0000011",   // 주문번호
         name: "상품명",
         amount: 30000,         // 숫자 타입
-        buyer_email: "json.email",
-        buyer_name: "json.name",
-        buyer_tel: "json.phone",
-        buyer_addr: "json.address",
-        buyer_postcode: "json.post"
+        buyer_email: "test@email",
+        buyer_name: "구매자",
+        buyer_tel: "010-0000-0000",
+        buyer_addr: "서울",
+        buyer_postcode: "000-000"
     }, function (rsp) { // callback
     	
      });
